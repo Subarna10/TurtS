@@ -1,91 +1,94 @@
 import turtle
 from tkinter import *
 
+# Functions Start
 
-def showturtle():  # function for showing turtle
+def showturtle():                           # Function for showing turtle
     turtle.showturtle()
 
 
-def turnleft():  # function for turning the turtle
-    leftEntry_num = int(leftEntry.get())
-    turtle.left(leftEntry_num)
-
-
-def move():  # function for turning the turtle
-    moveEntry_num = int(moveEntry.get())
-    turtle.forward(moveEntry_num)
-
-
-def Pup_Pdn():  # Function for toggle button | toggles penup and pendown
-    if Pup_Pdn_button.config('relief')[-1] == 'sunken':
-        Pup_Pdn_button.config(relief="raised")
+def pup_pdn():                              # function for PenUp and PenDown toggle button
+    if pup_pdn_button.config('relief')[-1] == 'sunken':
+        pup_pdn_button.config(relief="raised")
+        pup_pdn_button.config(text="Pen Up")
         turtle.penup()
-        Pup_Pdn_button.config(text="Pen Up")
     else:
-        Pup_Pdn_button.config(relief="sunken")
-        turtle.down()
-        Pup_Pdn_button.config(text="Pen Down")
+        pup_pdn_button.config(relief="sunken")
+        pup_pdn_button.config(text="Pen Down")
+        turtle.pendown()
 
 
-def circle():  # function for turning the turtle
-    circle_size_num = int(circle_size.get())
-    turtle.circle(circle_size_num)
+def turn_left():                            # Function for moving left
+    turtle.left(int(turn_left_entry.get()))
 
 
-def pencolor():  # function for changing pen color
-    color_text_num = color_text.get()
-    turtle.color(color_text_num)
+def move_forward():                         # Function for moving forward
+    turtle.forward(int(move_forward_entry.get()))
 
 
-def pensize():  # function for changing pen size
-    pensize_num = int(pensize_input.get())
-    turtle.pen(pensize=pensize_num)
+def draw_circle():                          # Function for drawing circle
+    turtle.circle(int(draw_circle_entry.get()))
 
 
-def bgcolor():  # function for changing Background color
-    BG_color_text_num = BG_color_text.get()
-    turtle.bgcolor(BG_color_text_num)
+def pen_size():                             # Function for changing pen size
+    turtle.pen(pensize=int(pen_size_entry.get()))
 
+
+def change_color():                         # Function for changing turtle's color
+    turtle.color(change_color_entry.get())
+
+
+def change_bg():                            # Function for changing background color
+    turtle.bgcolor(change_bg_entry.get())
+
+# Function End
 
 window = Tk()
 window.title("Turtle")
-window.geometry("200x500")
 
-heading = Label(window, text="TURTLE GUI").pack()
+heading = Label(window, text="TURTLE GUI")                                          #Heading Label
+heading.grid(row=0, column=0)
 
-showturtle_button = Button(window, text="Show Turtle", command=showturtle).pack()
+showturtle_button = Button(window, text="Show Turtle", command=showturtle)          #Showing turtle button
+showturtle_button.grid(row=0, column=1)
 
-leftEntry = Entry(window)  # Editbox for left angle
-leftEntry.pack(fill=X, pady=10)
-leftEntry_Button = Button(window, text="Turn left", command=turnleft)
-leftEntry_Button.pack()
+pup_pdn_button = Button(window, text="Pen Down", relief="sunken", command=pup_pdn)  #PenUp and PenDown Button
+pup_pdn_button.grid(row=0, column=2)
 
-moveEntry = Entry(window)  # Editbox for move distance
-moveEntry.pack(fill=X, pady=10)
-moveEntry_Button = Button(window, text="Move", command=move)
-moveEntry_Button.pack()
+turn_left_entry = Entry(window)                                                     #Entry for left angle
+turn_left_entry.grid(row=1, column=0, columnspan=2)
 
-Pup_Pdn_button = Button(window, text="Pen Down", width=12, relief="sunken", command=Pup_Pdn)
-Pup_Pdn_button.pack(fill=X, pady=10)
+turn_left_button = Button(window, text="Turn Left", command=turn_left)              #Button for left angle
+turn_left_button.grid(row=1, column=2)
 
-circle_size = Entry(window)  # Editbox for circle size
-circle_size.pack(fill=X, pady=10)
-circle_size_Button = Button(window, text="Draw Circle", command=circle)
-circle_size_Button.pack()
+move_forward_entry = Entry(window)                                                  #Entry for move distance
+move_forward_entry.grid(row=1, column=3, columnspan=2)
 
-color_text = Entry(window)  # Editbox for color
-color_text.pack(fill=X, pady=10)
-color_text_Button = Button(window, text="Change Color", command=pencolor)
-color_text_Button.pack()
+move_forward_button = Button(window, text="Move Forward", command=move_forward)     #Button for moving
+move_forward_button.grid(row=1, column=5)
 
-pensize_input = Entry(window)  # Editbox for pen size
-pensize_input.pack(fill=X, pady=10)
-pensize_Button = Button(window, text="Change Pensize", command=pensize)
-pensize_Button.pack()
+draw_circle_entry = Entry(window)                                                   #Entry for circle size
+draw_circle_entry.grid(row=2, column=0, columnspan=2)
 
-BG_color_text = Entry(window)  # Editbox for color
-BG_color_text.pack(fill=X, pady=10)
-BG_color_text_Button = Button(window, text="Change BG Color", command=bgcolor)
-BG_color_text_Button.pack()
+draw_circle_button = Button(window, text="Draw Circle", command=draw_circle)        #Button for drawing circle
+draw_circle_button.grid(row=2, column=2)
+
+pen_size_entry = Entry(window)                                                      #Entry for changing pensize
+pen_size_entry.grid(row=2, column=3, columnspan=2)
+
+pen_size_button = Button(window, text="Change PenSize", command=pen_size)           #Button for changing pensize
+pen_size_button.grid(row=2, column=5)
+
+change_color_entry = Entry(window)                                                  #Entry for changing pencolor
+change_color_entry.grid(row=3, column=0, columnspan=2)
+
+change_color_button = Button(window, text="Change Color", command=change_color)     #Button for changing pencolor
+change_color_button.grid(row=3, column=2)
+
+change_bg_entry = Entry(window)                                                     #Entry for changing background color
+change_bg_entry.grid(row=3, column=3, columnspan=2)
+
+change_bg_button = Button(window, text="Change BG Color", command=change_bg)        #Button for changing background color
+change_bg_button.grid(row=3, column=5)
 
 window.mainloop()
