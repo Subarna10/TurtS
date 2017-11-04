@@ -2,6 +2,6 @@
 
 ### GUI For Python's Turtle
 
-[![](https://preview.ibb.co/cwbSOG/Turts.jpg "TurtS")](https://github.com/kirandroid/TurtS/)
+[![](https://preview.ibb.co/eDT8Fw/MTurts.jpg "TurtS")](https://github.com/kirandroid/TurtS/)
 
 
